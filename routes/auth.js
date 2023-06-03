@@ -29,7 +29,7 @@ transporter.verify((err, success) => {
 });
 
 const sendVerificationEmail = ({ _id, email }, res) => {
-  const currentUrl = "https://snow-net.herokuapp.com/";
+  const currentUrl = "https://restless-haze-321.fly.dev/";
   const uniqueString = uuidv4() + _id;
   const html = getEmailHtml(
     currentUrl + "api/auth/verify/" + _id + "/" + uniqueString
