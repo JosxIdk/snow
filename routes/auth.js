@@ -29,7 +29,7 @@ transporter.verify((err, success) => {
 });
 
 const sendVerificationEmail = ({ _id, email }, res) => {
-  const currentUrl = "https://restless-haze-321.fly.dev/";
+  const currentUrl = "https://snowcy.herokuapp.com/";
   const uniqueString = uuidv4() + _id;
   const html = getEmailHtml(
     currentUrl + "api/auth/verify/" + _id + "/" + uniqueString
@@ -90,7 +90,7 @@ router.get("/verify/:id/:uniqueString", async (req, res) => {
     if (user?.expiresAt < Date.now) {
       try {
         await UserVerification.deleteOne({ id });
-        res.redirect("http://snowcy.com/verified/error");
+        res.redirect("http://localhost:3000/verified/error");
       } catch (err) {
         console.log(err);
         return res.status(500).json("User verification as expired");
@@ -102,7 +102,7 @@ router.get("/verify/:id/:uniqueString", async (req, res) => {
 
       await User.updateOne({ _id: id }, { verified: true });
       await UserVerification.deleteOne({ id });
-      res.redirect("http://snowcy.com/verified/success");
+      res.redirect("http://localhost:3000/verified/success");
     }
   } catch (err) {
     console.log(err);
