@@ -19,7 +19,7 @@ dotenv.config();
 //CORS
 app.use(
   cors({
-    origin: "https://snowcy.com",
+    origin: "http://localhost:3000",
     optionsSuccessStatus: 200,
   })
 );
